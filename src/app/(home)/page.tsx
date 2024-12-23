@@ -59,6 +59,8 @@ export default function Home() {
         <Typography>Completed: {data?.completed ? 'Yes' : 'No'}</Typography>
         <Typography>User ID: {data?.userId}</Typography>
       </Container>
+
+      <TodoItem onClick={onClick}/>
     </Container>
   );
 }

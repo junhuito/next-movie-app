@@ -12,8 +12,11 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.2.1",
     "@mui/material": "^6.2.1",
     "@mui/material-nextjs": "^6.2.1",
+    "@tanstack/react-query": "^5.62.8",
+    "mongodb": "^6.12.0",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
