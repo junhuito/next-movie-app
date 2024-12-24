@@ -60,7 +60,7 @@ export default function Home() {
         <Typography>User ID: {data?.userId}</Typography>
       </Container>
 
-      <TodoItem onClick={onClick}/>
+      {/* <TodoItem onClick={onClick}/> */}
     </Container>
   );
 }

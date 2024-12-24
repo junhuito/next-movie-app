@@ -2,16 +2,16 @@
 import * as React from 'react'
 import { MovieCard } from '@/components/MovieCard';
 import { Movie } from '@/types/movie';
-import { Container, Typography, Skeleton } from '@mui/material';
+import { Container, Typography, Skeleton, Box } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'next/navigation';
+import Image from 'next/image';
 
-export default function MovieDetailScreen({ params }: { params: Promise<{ id: string }> }) {
-
-  const { id } = React.use(params)
+export default function MovieDetailScreen() {
+  const { id } = useParams<{ id: string }>();
 
   const { data: movie, isLoading, error } = useQuery({
     queryKey: ['movie', id],
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     queryFn: async (): Promise<Movie> => {
       return fetch(`/api/movie/${id}`).then((response) => response.json());
     }
@@ -22,7 +22,7 @@ export default function MovieDetailScreen({ params }: { params: Promise<{ id: st
   }
 
   if (isLoading) {
-    return <Skeleton width={300} height={300}/>
+    return <Skeleton width={500} height={500}/>
   }
 
   if (!movie) {
@@ -30,8 +30,19 @@ export default function MovieDetailScreen({ params }: { params: Promise<{ id: st
   }
 
   return (
-    <Container className="space-y-4 p-10">
-      <MovieCard key={movie?._id} data={movie}/>
-    </Container>
+    <Box>
+      <div className="h-[55vh] relative overflow-hidden">
+        <Image
+          src={movie.poster}
+          alt={movie.title}
+          className='hover:scale-105 transition-transform duration-500'
+          fill
+        />
+        <Typography variant='h4' className='absolute bottom-0 bg-opacity-30 text-white bg-gradient-to-t w-screen from-black to-transparent p-4'>{movie.title}</Typography>
+      </div>
+      <div>
+        
+      </div>
+    </Box>
   );
 }
