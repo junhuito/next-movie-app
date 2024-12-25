@@ -3,6 +3,7 @@ export interface Movie {
   plot: string;
   genres: string[];
   runtime: number;
+  fullplot: string;
   cast: string[];
   num_mflix_comments: number;
   poster: string;
@@ -18,6 +19,10 @@ export interface Movie {
   countries: string[];
   type: string;
   tomatoes: Tomatoes;
+}
+
+export interface MovieDetail extends Movie {
+  similarMovies: Movie[];
 }
 
 interface Tomatoes {
