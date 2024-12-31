@@ -31,8 +31,6 @@ export default function MovieDetailScreen() {
     return <Typography>Movie not found!</Typography>
   }
 
-  console.log(movie)
-
   const numberToTime = (num: number) => {
     const hours = Math.floor(num / 60);
     const minutes = num % 60;
